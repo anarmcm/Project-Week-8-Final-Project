@@ -1,9 +1,9 @@
 <img src="https://bit.ly/2VnXWr2" alt="Ironhack Logo" width="100"/>
 
-# Title of My Project
-*[Your Name]*
+# TMDB 5000 Movie Dataset
+*Ana Recio de Mur*
 
-*[Your Cohort, Campus & Date]*
+*[Data Analytics, Ironhack, 2019]*
 
 ## Content
 - [Project Description](#project-description)
@@ -19,40 +19,49 @@
 - [Links](#links)
 
 ## Project Description
-Write a short description of your project: 3-5 sentences about what your project is about, why you chose this topic (if relevant), and what you are trying to show.
+In this project I analyse the TMDB Movie Dataset, with the objective of predicting a movie's success, before it has been released. I considered movie's success could be explained both by the revenue generated and its rating. I also wanted to see if the popularity was related to its success.  
 
 ## Hypotheses / Questions
-* What data/business/research/personal question you would like to answer?
-* What is the context for the question and the possible scientific or business application?
-* What are the hypotheses you would like to test in order to answer your question?  
-Frame your hypothesis with statistical/data languages (i.e. define Null and Alternative Hypothesis). You can use formulas if you want but that is not required.
+* Can we build a model to predict a movie's success?
 
 ## Dataset
-* Where did you get your data? If you downloaded a dataset (either public or private), describe where you downloaded it and include the command to load the dataset.
-* Did you build your own datset? If so, did you use an API or a web scraper? PRovide the relevant scripts in your repo.
-* For all types of datasets, provide a description of the size, complexity, and data types included in your dataset, as well as a schema of the tables if necessary.
-* If the question cannot be answered with the available data, why not? What data would you need to answer it better?
+* The data comes from the TMDB API. From this API I downloaded a csv. from Kaggle.
+* The dataset contains 5000 movies with the following columns:
+    - Movie Title
+    - Budget 
+    - Revenue
+    - Runtime
+    - Release Date 
+    - Popularity 
+    - Vote Average 
+    - Vote Count (amount of people that voted)
+    - Genres 
+    - Production Companies 
+    - Production Countries 
+    - Cast 
+    - Crew
+    - Original Languages 
+    - Spoken Languages 
 
 ## Cleaning
-Describe your full process of data wrangling and cleaning. Document why you chose to fill missing values, extract outliers, or create the variables you did as well as your reasoning behind the process.
+
+It is a popular quote in Data Science that 80% of the work accounts for the cleaning. In my case it was a 90%. 
+    - A problem I encountered was that the columns "cast", "crew", "genres", "production companies", "production countries", "original languages" and "spoken languages" were in JSON format, so I had to parse the JSON string using json.loads.
+    - Another problem I faced was that there was missing data for revenue and budget, around 30% of missing values, so I had to drop the missing values, however, I saved two datasets, one dropping the missing values of these columns, and another one dropping the two columns completely. I used the first dataset to predict the revenue, since I needed the budget and the revenue in order to train the data, and the second one to predict the score, since I found out it wasn't very correlated with budget and revenue.
 
 ## Analysis
-* Overview the general steps you went through to analyze your data in order to test your hypothesis.
-* Document each step of your data exploration and analysis.
-* Include charts to demonstrate the effect of your work.
-* If you used Machine Learning in your final project, describe your feature selection process.
+* My main objective was to clean the data in order to improve the accuracy of the machine learning model.
+* I looked at the correlations between the variables, both numerical and categorical, in order to see which features to include. 
+* When creating dummies, I had to filter the cast and crew, since there were loads of actors and directors per movie. I looked at the correlations between actors/directors and revenue, and actors/directors and vote average, to see which directors and actors to include as features in the machine learning model. With this selection I could reduce the amount of columns to 158. However, this was still too much, so I used PCA to reduce the amount of features to 2. 
 
 ## Model Training and Evaluation
-*Include this section only if you chose to include ML in your project.*
 * Describe how you trained your model, the results you obtained, and how you evaluated those results.
 
 ## Conclusion
-* Summarize your results. What do they mean?
-* What can you say about your hypotheses?
-* Interpret your findings in terms of the questions you try to answer.
+* An interesting conclusion from the project is that when using PCA the accuracy of the model was lower. 
 
 ## Future Work
-Address any questions you were unable to answer, or any next steps or future extensions to your project.
+Future improvements would be to have more data.
 
 ## Workflow
 Outline the workflow you used in your project. What were the steps?
@@ -69,4 +78,4 @@ Include links to your repository, slides and trello/kanban board. Feel free to i
 
 [Repository](https://github.com/)  
 [Slides](https://slides.com/)  
-[Trello](https://trello.com/en)  
+[Trello](https://trello.com/b/PmEjwQ7m/final-project)  
