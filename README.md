@@ -55,7 +55,9 @@ It is a popular quote in Data Science that 80% of the work accounts for the clea
 * When creating dummies, I had to filter the cast and crew, since there were loads of actors and directors per movie. I looked at the correlations between actors/directors and revenue, and actors/directors and vote average, to see which directors and actors to include as features in the machine learning model. With this selection I could reduce the amount of columns to 158. However, this was still too much, so I used PCA to reduce the amount of features to 2. 
 
 ## Model Training and Evaluation
-* Describe how you trained your model, the results you obtained, and how you evaluated those results.
+* I did two models, one to predict the revenue and another one to predict the score. 
+* To predict the revenue I trained a linear regression model with 158 features.
+* To predict the score I trained a logistic regression model with 158 features. I considered two possibilities, a good or bad movie. According to my experience in movie rating, a movie would be good if it had a score higher than 6.5. After doing the exploratory analysis I found out 6.5 was the number with the highest frequency, and the data followed a symmetrical pattern, so no problem of unbalaced data. 
 
 ## Conclusion
 * An interesting conclusion from the project is that when using PCA the accuracy of the model was lower. 
@@ -64,18 +66,20 @@ It is a popular quote in Data Science that 80% of the work accounts for the clea
 Future improvements would be to have more data.
 
 ## Workflow
-Outline the workflow you used in your project. What were the steps?
-How did you test the accuracy of your analysis and/or machine learning algorithm?
+* Cleaning 
+* Creating dummies 
+* Creating models
 
 ## Organization
-How did you organize your work? Did you use any tools like a trello or kanban board?
+I used Trello to organize my work. 
 
-What does your repository look like? Explain your folder and file structure.
+The repository is divided in data and code, the data files contain csv. Inside the code file there are three jupyter notebooks: 
+    - Cleaning and eda 
+    - Dummies 
+    - Models
 
 ## Links
-Include links to your repository, slides and trello/kanban board. Feel free to include any other links associated with your project.
 
-
-[Repository](https://github.com/)  
-[Slides](https://slides.com/)  
+[Repository](https://github.com/anarmcm/Project-Week-8-Final-Project)  
+[Slides](-)  
 [Trello](https://trello.com/b/PmEjwQ7m/final-project)  
